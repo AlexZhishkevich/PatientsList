@@ -7,12 +7,12 @@ namespace PatientsList.Domain.Abstractions
     public interface IPatientsRepository
     {
         /// <summary>
-        /// Get patient data by name data identifier
+        /// Get patient data by identifier
         /// </summary>
         /// <param name="nameGuid"></param>
         /// <returns></returns>
         Task<Result<Patient>> GetByIdAsync(
-            Guid nameGuid,
+            Guid patientId,
             CancellationToken token);
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace PatientsList.Domain.Abstractions
         /// <param name="nameGuid">patient name identifier</param>
         /// <returns><see cref="Result"/> with operation success indication</returns>
         Task<Result> RemoveAsync(
-            Guid nameGuid,
+            Guid patientId,
             CancellationToken token);
     }
 }
