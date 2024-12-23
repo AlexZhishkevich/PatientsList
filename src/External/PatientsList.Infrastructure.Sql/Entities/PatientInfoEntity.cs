@@ -17,6 +17,7 @@ namespace PatientsList.Infrastructure.Sql.Entities
         {
             return new Patient
             {
+                Id = Id,
                 Name = NameDataEntity.ToDomainModel(),
                 Gender = Gender is { } notNullByte
                     ? (GenderType)notNullByte
