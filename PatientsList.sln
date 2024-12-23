@@ -8,6 +8,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{62407277-D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsList.Domain", "src\Core\PatientsList.Domain\PatientsList.Domain.csproj", "{D66E6361-739A-4FC2-A636-031927F3A029}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{D69416E5-DBAA-4928-AA9C-95FE95A94FD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsList.Infrastructure.Sql", "src\External\PatientsList.Infrastructure.Sql\PatientsList.Infrastructure.Sql.csproj", "{262368DC-15AC-4E61-95AE-2135DA077DB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +22,10 @@ Global
 		{D66E6361-739A-4FC2-A636-031927F3A029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D66E6361-739A-4FC2-A636-031927F3A029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D66E6361-739A-4FC2-A636-031927F3A029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262368DC-15AC-4E61-95AE-2135DA077DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262368DC-15AC-4E61-95AE-2135DA077DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262368DC-15AC-4E61-95AE-2135DA077DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262368DC-15AC-4E61-95AE-2135DA077DB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -25,5 +33,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{62407277-D6B4-4C53-8A7C-DE7CBA440258} = {B6875BD5-BAC6-4669-8FD6-B27D5A7C2FDC}
 		{D66E6361-739A-4FC2-A636-031927F3A029} = {62407277-D6B4-4C53-8A7C-DE7CBA440258}
+		{D69416E5-DBAA-4928-AA9C-95FE95A94FD4} = {B6875BD5-BAC6-4669-8FD6-B27D5A7C2FDC}
+		{262368DC-15AC-4E61-95AE-2135DA077DB4} = {D69416E5-DBAA-4928-AA9C-95FE95A94FD4}
 	EndGlobalSection
 EndGlobal
