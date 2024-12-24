@@ -1,9 +1,8 @@
-﻿namespace PatientsList.Domain.Models.Filters
-{
-    public class DateTimeSearchFilter
-    {
-        public SearchOption Option { get; set; }
+﻿using PatientsList.Domain.Models.DateAndTime;
 
-        public DateTime Value { get; set; }
-    }
+namespace PatientsList.Domain.Models.Filters
+{
+    public record DateTimeSearchFilter(
+        SearchOption Option,
+        DateTimeCustomModel Value);
 }
