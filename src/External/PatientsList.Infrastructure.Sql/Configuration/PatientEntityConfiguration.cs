@@ -4,11 +4,11 @@ using PatientsList.Infrastructure.Sql.Entities;
 
 namespace PatientsList.Infrastructure.Sql.Configuration
 {
-    internal class PatientInfoEntityConfiguration : IEntityTypeConfiguration<PatientInfoEntity>
+    internal class PatientEntityConfiguration : IEntityTypeConfiguration<PatientEntity>
     {
-        public void Configure(EntityTypeBuilder<PatientInfoEntity> builder)
+        public void Configure(EntityTypeBuilder<PatientEntity> builder)
         {
-            builder.ToTable("patients_data");
+            builder.ToTable("patients");
             builder.HasKey(pi => pi.Id);
 
             builder
@@ -28,8 +28,8 @@ namespace PatientsList.Infrastructure.Sql.Configuration
 
             builder
                .HasOne(pi => pi.NameDataEntity)
-               .WithOne(pn => pn.PatientInfoEntity)
-               .HasForeignKey<PatientInfoEntity>(pi => pi.NameDataFK)
+               .WithOne(pn => pn.PatientEntity)
+               .HasForeignKey<PatientEntity>(pi => pi.NameDataFK)
                .IsRequired();
         }
     }

@@ -8,12 +8,12 @@ namespace PatientsList.Infrastructure.Sql
     {
         public PatientsDbContext(DbContextOptions<PatientsDbContext> options) : base(options) { }
 
-        public DbSet<PatientInfoEntity>? PatientsInfoSet { get; set; }
+        public DbSet<PatientEntity>? PatientsInfoSet { get; set; }
         public DbSet<PatientNameDataEntity>? PatientNamesSet { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new PatientInfoEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new PatientEntityConfiguration());
             modelBuilder.ApplyConfiguration(new PatientNameEntityConfiguration());
 
             base.OnModelCreating(modelBuilder);

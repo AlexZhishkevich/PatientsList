@@ -19,7 +19,7 @@ namespace PatientsList.Infrastructure.Sql.Entities
         /// N.B.! Also can be stored as list of 'GivenNameEntity' with FK to 'NameDataEntity'
         public string? GivenNames { get; set; } = string.Empty;
 
-        public PatientInfoEntity PatientInfoEntity { get; set; } = new();
+        public PatientEntity? PatientEntity { get; set; }
 
         internal static PatientNameDataEntity CreateFromDomainModel(NameData nameData)
         {
@@ -29,10 +29,13 @@ namespace PatientsList.Infrastructure.Sql.Entities
             {
                 givenNames = new StringBuilder();
 
-                foreach (var name in nameData.GivenNames)
+                for (int index = 0; index < nameData.GivenNames.Count; index++)
                 {
+                    string? name = nameData.GivenNames[index];
                     givenNames.Append(name);
-                    givenNames.Append(GivenNameSeparator);
+
+                    if (index < nameData.GivenNames.Count - 1)
+                        givenNames.Append(GivenNameSeparator);
                 }
             }
 
@@ -40,9 +43,9 @@ namespace PatientsList.Infrastructure.Sql.Entities
             {
                 Id = nameData.Id,
                 Family = nameData.Family,
-                Use = nameData.Use is { } notNullType 
-                    ? (byte)notNullType 
-                    : null,
+                Use = nameData.Use is { } notNullType
+                   ? (byte?)(int)notNullType
+                   : null,
                 GivenNames = givenNames?.ToString()
             };
         }

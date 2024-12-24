@@ -5,6 +5,7 @@ using PatientsList.Domain.Abstractions;
 using PatientsList.Domain.Models.Filters;
 using PatientsList.Domain.Models.People;
 using PatientsList.Infrastructure.Sql.Entities;
+using PatientsList.Infrastructure.Sql.Helpers;
 
 namespace PatientsList.Infrastructure.Sql.Repositories
 {
@@ -15,7 +16,7 @@ namespace PatientsList.Infrastructure.Sql.Repositories
 
         public PatientsRepository(
             PatientsDbContext context,
-            ILogger logger)
+            ILogger<PatientsRepository> logger)
         {
             _context = context;
             _logger = logger;
@@ -51,11 +52,39 @@ namespace PatientsList.Infrastructure.Sql.Repositories
         }
 
         /// <inheritdoc/>
-        public Task<Result<IList<Patient>>> GetByBirthDateAsync(
+        public async Task<Result<IList<Patient>>> GetByBirthDateAsync(
             IList<DateTimeSearchFilter> dateSearchFilters,
             CancellationToken token)
         {
-            throw new NotImplementedException();
+            if (dateSearchFilters.Count < 1)
+            {
+                _logger.LogWarning("Attempt to get patients by 'BirthDate' with empty filters");
+                return Result.Failure<IList<Patient>>("Filters collection is empty");
+            }
+
+            try
+            {
+                var query = _context
+                   .PatientsInfoSet!
+                   .AsNoTracking()
+                   .Include(p => p.NameDataEntity);
+
+                query.AddBirthDateQueryFilters(dateSearchFilters);
+
+                var patientEntities = await query
+                    .ToListAsync(cancellationToken: token);
+
+                IList<Patient> patients = patientEntities
+                    .Select(p => p.ToDomainModel())
+                    .ToList();
+
+                return Result.Success(patients);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Patient filtered data receiving error");
+                return Result.Failure<IList<Patient>>(ex.Message);
+            }
         }
 
         /// <inheritdoc/>
@@ -74,8 +103,9 @@ namespace PatientsList.Infrastructure.Sql.Repositories
 
                 token.ThrowIfCancellationRequested();
 
-                var patientInfoEntity = new PatientInfoEntity
+                var patientInfoEntity = new PatientEntity
                 {
+                    NameDataEntity = patientNameDataEntity,
                     Gender = patient.Gender != null
                         ? (byte)patient.Gender
                         : null,
@@ -132,6 +162,7 @@ namespace PatientsList.Infrastructure.Sql.Repositories
                 var updatedNameInfo = PatientNameDataEntity
                     .CreateFromDomainModel(patient.Name);
 
+                nameInfo ??= new PatientNameDataEntity();
                 nameInfo.Use = updatedNameInfo.Use;
                 nameInfo.Family = updatedNameInfo.Family;
                 nameInfo.GivenNames = updatedNameInfo.GivenNames;
@@ -164,6 +195,7 @@ namespace PatientsList.Infrastructure.Sql.Repositories
             {
                 var patient = await _context
                     .PatientsInfoSet!
+                    .Include(p => p.NameDataEntity)
                     .FirstOrDefaultAsync(t => t.Id == patientId, cancellationToken: token);
 
                 if (patient == null)
@@ -174,6 +206,8 @@ namespace PatientsList.Infrastructure.Sql.Repositories
                 }
 
                 token.ThrowIfCancellationRequested();
+
+                _context.PatientNamesSet!.Remove(patient.NameDataEntity!);
 
                 _context.PatientsInfoSet!.Remove(patient);
 

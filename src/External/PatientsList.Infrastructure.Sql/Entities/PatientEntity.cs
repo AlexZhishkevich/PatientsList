@@ -2,7 +2,7 @@
 
 namespace PatientsList.Infrastructure.Sql.Entities
 {
-    public class PatientInfoEntity
+    public class PatientEntity
     {
         public Guid Id { get; set; }
 
@@ -11,14 +11,14 @@ namespace PatientsList.Infrastructure.Sql.Entities
         public bool? Active { get; set; }
 
         public Guid NameDataFK { get; set; }
-        public PatientNameDataEntity NameDataEntity { get; set; } = new();
+        public PatientNameDataEntity? NameDataEntity { get; set; }
 
         internal Patient ToDomainModel()
         {
             return new Patient
             {
                 Id = Id,
-                Name = NameDataEntity.ToDomainModel(),
+                Name = NameDataEntity!.ToDomainModel(),
                 Gender = Gender is { } notNullByte
                     ? (GenderType)notNullByte
                     : null,
