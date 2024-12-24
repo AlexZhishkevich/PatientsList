@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsList.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsList.Application", "src\Core\PatientsList.Application\PatientsList.Application.csproj", "{3FBFE915-8515-4451-B8BE-912210D9B79A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsList.Api", "src\External\PatientsList.Api\PatientsList.Api.csproj", "{617D2397-6828-41CA-B33F-8032C24AA866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{3FBFE915-8515-4451-B8BE-912210D9B79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FBFE915-8515-4451-B8BE-912210D9B79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FBFE915-8515-4451-B8BE-912210D9B79A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{617D2397-6828-41CA-B33F-8032C24AA866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617D2397-6828-41CA-B33F-8032C24AA866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617D2397-6828-41CA-B33F-8032C24AA866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617D2397-6828-41CA-B33F-8032C24AA866}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 		{D69416E5-DBAA-4928-AA9C-95FE95A94FD4} = {B6875BD5-BAC6-4669-8FD6-B27D5A7C2FDC}
 		{262368DC-15AC-4E61-95AE-2135DA077DB4} = {D69416E5-DBAA-4928-AA9C-95FE95A94FD4}
 		{3FBFE915-8515-4451-B8BE-912210D9B79A} = {62407277-D6B4-4C53-8A7C-DE7CBA440258}
+		{617D2397-6828-41CA-B33F-8032C24AA866} = {D69416E5-DBAA-4928-AA9C-95FE95A94FD4}
 	EndGlobalSection
 EndGlobal
