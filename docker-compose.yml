@@ -1,0 +1,21 @@
+services:
+  patientslist.api:
+    image: ${DOCKER_REGISTRY-}patientslistapi
+    container_name: patientslist.api
+    build:
+      context: .
+      dockerfile: src/External/PatientsList.Api/Dockerfile
+    ports:
+      - "8080:8080"
+
+  patientslist.database:
+    image: postgres:latest
+    container_name: patientslist.database
+    environment:
+      - POSTGRES_DB=patients
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=pgsql
+    volumes:
+      - ./.containers/patientslist-db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
