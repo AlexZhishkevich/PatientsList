@@ -1,7 +1,5 @@
 # PatientsList
 
-## Getting started
-
 Test repository created for training purposes.
 
 ## Approaches used:
@@ -9,7 +7,7 @@ Test repository created for training purposes.
 - Clean architecture
 - CQRS (Mediatr)
 - FluentValidation
-- HL7 FHIR specification for patients data
+- [HL7 FHIR](https://hl7.org/fhir/) specification for patients data
 - PostgreSQL
 - Docker
 
