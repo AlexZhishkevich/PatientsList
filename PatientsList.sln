@@ -18,6 +18,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsList.Api", "src\Ext
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E49DF2FB-9BFA-4031-8BF9-558A6D9C8AAD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2C6F34B1-49AF-4381-B0C6-81D592E6518D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsCretionConsoleApp", "tests\PatientsCretionConsoleApp\PatientsCretionConsoleApp.csproj", "{C78E23B6-047F-41FB-A6C4-3C42C8737C9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,10 @@ Global
 		{E49DF2FB-9BFA-4031-8BF9-558A6D9C8AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E49DF2FB-9BFA-4031-8BF9-558A6D9C8AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E49DF2FB-9BFA-4031-8BF9-558A6D9C8AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C78E23B6-047F-41FB-A6C4-3C42C8737C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C78E23B6-047F-41FB-A6C4-3C42C8737C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C78E23B6-047F-41FB-A6C4-3C42C8737C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C78E23B6-047F-41FB-A6C4-3C42C8737C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +63,6 @@ Global
 		{262368DC-15AC-4E61-95AE-2135DA077DB4} = {D69416E5-DBAA-4928-AA9C-95FE95A94FD4}
 		{3FBFE915-8515-4451-B8BE-912210D9B79A} = {62407277-D6B4-4C53-8A7C-DE7CBA440258}
 		{617D2397-6828-41CA-B33F-8032C24AA866} = {D69416E5-DBAA-4928-AA9C-95FE95A94FD4}
+		{C78E23B6-047F-41FB-A6C4-3C42C8737C9F} = {2C6F34B1-49AF-4381-B0C6-81D592E6518D}
 	EndGlobalSection
 EndGlobal
