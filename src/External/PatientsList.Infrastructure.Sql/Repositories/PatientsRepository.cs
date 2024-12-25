@@ -66,10 +66,10 @@ namespace PatientsList.Infrastructure.Sql.Repositories
             {
                 var query = _context
                    .PatientsInfoSet!
-                   .AsNoTracking()
-                   .Include(p => p.NameDataEntity);
-
-                query.AddBirthDateQueryFilters(dateSearchFilters);
+                   .Include(p => p.NameDataEntity)
+                   .AsNoTracking();
+                  
+                query = query.AddBirthDateQueryFilters(dateSearchFilters);
 
                 var patientEntities = await query
                     .ToListAsync(cancellationToken: token);

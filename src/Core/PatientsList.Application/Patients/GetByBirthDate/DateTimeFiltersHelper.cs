@@ -13,6 +13,7 @@ namespace PatientsList.Application.Patients.GetByBirthDate
 
         private const int FilterTypeTagLength = 2;
         private const int OnlyDateLength = 10;
+        private const int DateTimeWithMinutesLength = 16;
 
         private static readonly Dictionary<string, SearchOption> _searchOptions = new()
         {
@@ -47,7 +48,8 @@ namespace PatientsList.Application.Patients.GetByBirthDate
 
                 var dateTimeString = filterString[FilterTypeTagLength..];
 
-                if (DateTime.TryParse(dateTimeString, out var dateTime))
+                if (dateTimeString.Length >= DateTimeWithMinutesLength &&
+                    DateTime.TryParse(dateTimeString, out var dateTime))
                 {
                     dateTime = dateTime.ToUniversalTime();
                     resultFilters.Add(new DateTimeSearchFilter(
@@ -55,6 +57,8 @@ namespace PatientsList.Application.Patients.GetByBirthDate
                         new DateTimeCustomModel(
                             new DateDataModel(dateTime),
                             new TimeModel(dateTime))));
+
+                    continue;
                 }
 
                 string dateString;
