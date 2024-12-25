@@ -19,6 +19,9 @@ EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E49DF2FB-9BFA-4031-8BF9-558A6D9C8AAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2C6F34B1-49AF-4381-B0C6-81D592E6518D}"
+	ProjectSection(SolutionItems) = preProject
+		tests\PatientsList.postman_collection.json = tests\PatientsList.postman_collection.json
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientsCretionConsoleApp", "tests\PatientsCretionConsoleApp\PatientsCretionConsoleApp.csproj", "{C78E23B6-047F-41FB-A6C4-3C42C8737C9F}"
 EndProject

@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "563f10c6-4aab-4832-943a-1b9966a200cf",
+		"name": "PatientsList",
+		"description": "Collection of base requests to test API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9191018"
+	},
+	"item": [
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/patients/get?id=55d1535f-cf67-4e28-8c76-655ed8b68b2a",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "55d1535f-cf67-4e28-8c76-655ed8b68b2a",
+							"description": "Unique patient identifier"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByBirthDate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/patients/getByBirthDate?date=eq1994-03-17T12:50",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"getByBirthDate"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "eq1994-03-17T12:50",
+							"description": "https://www.hl7.org/fhir/search.html#date\nN.B.! only date and time up to and including seconds are taken into account"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetByExactDateTime",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/patients/getByBirthDate?date=eq1994-03-17T12:50",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"getByBirthDate"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "eq1994-03-17T12:50",
+									"description": "https://www.hl7.org/fhir/search.html#date"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetWithinYear",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/patients/getByBirthDate?date=eq1994",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"getByBirthDate"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "eq1994",
+									"description": "all dates during 1994 year"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetWithinMonth",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/patients/getByBirthDate?date=eq1994-03",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"getByBirthDate"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "eq1994-03",
+									"description": "all matches during the third month of 1994"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetWithinDay",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/patients/getByBirthDate?date=eq1994-03-17",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"getByBirthDate"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "eq1994-03-17",
+									"description": "all matches of 1994-03-17"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "GetBySeveralFilters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/patients/getByBirthDate?date=le1994-03-17&date=ne1980",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"getByBirthDate"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "le1994-03-17",
+									"description": "all matches of 1994-03-17 and eqrlier"
+								},
+								{
+									"key": "date",
+									"value": "ne1980"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nameUsage\": 0,\r\n    \"family\": \"Smith\",\r\n    \"givenNames\": [\r\n        \"Sophia\"\r\n    ],\r\n    \"birthDate\": \"1952-06-12T21:00:00Z\",\r\n    \"gender\": 0,\r\n    \"active\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/patients/add",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nameUsage\": 0,\r\n    \"family\": \"Smith\",\r\n    \"givenNames\": [\r\n        \"Sophia\"\r\n    ],\r\n    \"birthDate\": \"1952-06-12T21:00:00Z\",\r\n    \"gender\": 0,\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/patients/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"add"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"5afcb310-c842-4ff0-a78d-7415b71f6113\",\r\n    \"nameUsage\": 0,\r\n    \"family\": \"Smith\",\r\n    \"givenNames\": [\r\n        \"Sophia\"\r\n    ],\r\n    \"birthDate\": \"1952-06-12T21:00:00Z\",\r\n    \"gender\": 0,\r\n    \"active\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/patients/update",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"update"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"5afcb310-c842-4ff0-a78d-7415b71f6113\",\r\n    \"nameUsage\": 0,\r\n    \"family\": \"Smith\",\r\n    \"givenNames\": [\r\n        \"Sophia\"\r\n    ],\r\n    \"birthDate\": \"1952-06-12T21:00:00Z\",\r\n    \"gender\": 0,\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/patients/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"update"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/patients/remove?id=eea2803e-c33f-4b5d-bd92-3ad89b540f98",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"remove"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "eea2803e-c33f-4b5d-bd92-3ad89b540f98",
+							"description": "Unique patient identifier"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
