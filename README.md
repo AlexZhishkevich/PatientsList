@@ -11,5 +11,5 @@ Test repository created for training purposes.
 - PostgreSQL
 - Docker
 
-**N.B.! Template with 'Postman' request examples can be found [here](./tests/PatientsList.postman_collection.json)** /
+**N.B.! Template with 'Postman' request examples can be found [here](./tests/PatientsList.postman_collection.json)** \
 **And also [console app](./tests/PatientsCretionConsoleApp/) to fill db with test data**
