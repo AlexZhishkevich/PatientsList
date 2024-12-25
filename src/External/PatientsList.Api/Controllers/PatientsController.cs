@@ -78,7 +78,7 @@ namespace PatientsList.Api.Controllers
                 : BadRequest(result.Error);
         }
 
-        [HttpPost("remove")]
+        [HttpDelete("remove")]
         public async Task<ActionResult> Remove(
            Guid id,
            CancellationToken token)
