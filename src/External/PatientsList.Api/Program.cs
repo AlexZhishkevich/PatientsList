@@ -1,10 +1,14 @@
+using FluentValidation;
 using PatientsList.Api.Extensions;
+using PatientsList.Application.Patients.Create;
 using PatientsList.Application.Patients.GetByBirthDate;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+
+builder.Services.AddValidatorsFromAssembly(typeof(NewPersonDtoValidator).Assembly);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
